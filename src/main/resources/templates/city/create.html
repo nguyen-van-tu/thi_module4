@@ -13,6 +13,7 @@
         <tr>
             <td>Tên:</td>
             <td> <input type="text" th:field="*{name}">
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
             </td>
         </tr>
         <tr>
@@ -26,18 +27,21 @@
         <tr>
             <td><label >Diện tích: </label></td>
             <td><input type="text" th:field="*{area}"></td>
+            <td th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Name Error</td>
         </tr>
         <tr>
             <td><label >Dân số: </label></td>
             <td><input type="text" th:field="*{population}"></td>
-        </tr>
+            <td th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Name Error</td>        </tr>
         <tr>
             <td><label >GDP: </label></td>
             <td><input type="text" th:field="*{gdp}"></td>
+            <td th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Name Error</td>
         </tr>
         <tr>
             <td><label >Giới thiệu: </label></td>
             <td><textarea  rows = "10" cols = "80" th:field="*{description}"></textarea></td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</td>
         </tr>
 
     </table>

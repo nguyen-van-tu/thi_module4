@@ -1,7 +1,11 @@
 package com.example.demo.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -9,19 +13,25 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Name not empty")
+    @NotNull
+    @Size(min =1 , max = 1000)
     private String name;
-    @Size(min = 1, message = "Enter a positive number")
+    @NumberFormat
+    @Min(1)
     private double area;
-    @Size(min = 1, message = "Enter a positive number")
-    private Long population;
-    @Size(min = 1, message = "Enter a positive number")
-    private Double gdp;
-    @NotEmpty(message = "Description not empty")
+    @NumberFormat
+    @Min(1)
+    private long population;
+    @NumberFormat
+    @Min(1)
+    private double gdp;
+    @NotNull
+    @Size(min = 1)
     private String description;
-
     @ManyToOne
-    private com.example.demo.model.Country country;
+    private Country country;
+
+
 
     public City() {
     }

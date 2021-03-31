@@ -6,6 +6,8 @@ import com.example.demo.service.city.CityService;
 import com.example.demo.service.country.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,8 +52,12 @@ public class CityController {
     }
 
     @PostMapping("/create")
-    public ModelAndView createCity(@ModelAttribute City city){
+    public ModelAndView createCity(@Validated @ModelAttribute City city , BindingResult bindingResult){
         ModelAndView modelAndView= new ModelAndView("city/create");
+        if(bindingResult.hasFieldErrors()){
+            modelAndView=new ModelAndView("city/create");
+            return modelAndView;
+        }
         cityService.save(city);
         modelAndView.addObject("city", new City());
         modelAndView.addObject("mess", "Thêm mới thành công thành phố: " + city.getName());
