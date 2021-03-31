@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            padding: 8px; border: 2px dashed #FF4500; word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{country/create}" style="text-decoration: none">Add new city</a>
+<table border="1px">
+    <tr>
+        <td>#</td>
+        <td>Quốc gia</td>
+        <td>Xóa</td>
+
+    </tr>
+    <tr th:each = "c:${country}">
+        <td th:text ="${c.id}" ></td>
+        <td th:text ="${c.name}" ></td>
+        <td>
+            <a th:href="@{country/delete/__${c.getId()}__}"
+               onclick="return confirm('You may want to delete ?')" style="text-decoration: none ; color: red">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/cities}" style="text-decoration: none">Back to list city</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Tiết</title>
+    <style>
+        h4{
+            width:300px;
+            word-wrap:break-word;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="'Thành phố: ' + ${city.name}" style="color: red"></h1>
+<h4 th:text="'Tên:  ' + ${city.name}"></h4>
+<h4 th:text="'Quốc gia: ' + ${city.country.name}"></h4>
+<h4 th:text="'Diện tích:  ' + ${city.area}"></h4>
+<h4 th:text="'Dân số: ' + ${city.population}"></h4>
+<h4 th:text="'GDP: ' + ${city.gdp}"></h4>
+<h4 th:text="'Giới thiệu:  '  + ${city.description}"></h4>
+<a href="/cities" style="text-decoration: none" >Back list city</a>
+</body>
+</html>

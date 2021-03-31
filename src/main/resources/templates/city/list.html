@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+    <style >
+        table, th, td{
+            border:1px solid #ccc;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        table {
+            width: 50%;
+            height: 170px;
+        }
+        tr:hover{
+            background-color:#ddd;
+            cursor:pointer;
+        }
+        table{
+            padding: 8px; border: 2px dashed #FF4500; word-wrap: break-word;
+        }
+
+    </style>
+</head>
+<body>
+<a th:href="@{cities/create}"  style="text-decoration: none">Add new city</a>
+<br>
+<br>
+<a th:href="@{country/create} "  style="text-decoration: none">Add new country</a>
+<table border="1px">
+    <tr>
+        <th>#</th>
+        <th>Thành phố</th>
+        <th>Quốc gia</th>
+        <th>Chọn</th>
+
+    </tr>
+    <th:block th:each="c: ${city}">
+        <tr>
+            <td th:text="${c.id}"></td>
+            <td>
+                <a th:href="@{cities/view/__${c.getId()}__}" style="text-decoration: none">
+                    <span th:text="${c.name}"></span></a>
+            </td>
+            <td th:text="${c.country.name}"></td>
+            <td>
+                <a th:href="@{cities/edit/__${c.getId()}__}" style="text-decoration: none ; color: blue">Edit</a>
+                <a th:href="@{cities/delete/__${c.getId()}__}"
+                     onclick="return confirm('You may want to delete ?')" style="text-decoration: none ; color: red">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+
+</table>
+</body>
+</html>
